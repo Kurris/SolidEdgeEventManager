@@ -1,5 +1,5 @@
 # SolidEdgeEventManager
-处理SolidEdge的常见事件,高度封装,适合对SE的二次封装
+处理SolidEdge的常见事件,高度封装,适合对SE的二次开发
 
 ### 使用方式(Usage)
 * 如果当前为窗体,传入当前窗体实例,则以该窗体为主键,对其增减不同的事件
