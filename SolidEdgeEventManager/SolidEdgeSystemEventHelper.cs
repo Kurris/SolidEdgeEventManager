@@ -6,7 +6,10 @@ using System.Collections.Generic;
 
 namespace SolidEdge.Events.Helper
 {
-    internal sealed class SolidEdgeSystenEventHelper
+    /// <summary>
+    /// SolidEdge系统事件帮助类
+    /// </summary>
+    internal sealed class SolidEdgeSystemEventHelper
     {
         /// <summary>
         /// Application相关事件
@@ -14,7 +17,7 @@ namespace SolidEdge.Events.Helper
         /// <param name="ObjectKey">唯一键</param>
         /// <param name="EventType">事件枚举类型</param>
         /// <param name="RegisterAction">事件注册方法</param>
-        internal SolidEdgeSystenEventHelper(object ObjectKey, SEEvent EventType, Action<object[]> RegisterAction)
+        internal SolidEdgeSystemEventHelper(object ObjectKey, SEEvent EventType, Action<object[]> RegisterAction)
         {
             _mObjKey = ObjectKey;
             _mSEEventType = EventType;
@@ -35,7 +38,7 @@ namespace SolidEdge.Events.Helper
         /// <summary>
         /// 类型--多播方法
         /// </summary>
-        private readonly static Dictionary<SEEvent, Action<object[]>> _mDicMethods = new Dictionary<SEEvent, Action<object[]>>();
+        private readonly static Dictionary<SEEvent, Action<object[]>> _mDicMethods = new Dictionary<SEEvent, Action<object[]>>(new EnumComparer<SEEvent>());
 
         /// <summary>
         /// 事件类型
@@ -80,7 +83,7 @@ namespace SolidEdge.Events.Helper
             }
             else
             {
-                _mDicRelation.Add(_mObjKey, new Dictionary<SEEvent, Action<object[]>>()
+                _mDicRelation.Add(_mObjKey, new Dictionary<SEEvent, Action<object[]>>(new EnumComparer<SEEvent>())
                 {
                     [_mSEEventType] = _mRegisterMethod
                 });

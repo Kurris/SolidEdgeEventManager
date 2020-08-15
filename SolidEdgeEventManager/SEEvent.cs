@@ -1,5 +1,8 @@
 ﻿namespace SolidEdge.Events.EventEnum
 {
+    /// <summary>
+    /// SolidEdge事件枚举
+    /// </summary>
     public enum SEEvent
     {
 

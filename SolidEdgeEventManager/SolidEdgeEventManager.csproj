@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SEEvent.cs" />
     <Compile Include="SolidEdgeApplication.cs" />
@@ -51,7 +52,7 @@
     <Compile Include="SolidEdgeEventManager.cs" />
     <Compile Include="SolidEdgeEventManagerBase.cs" />
     <Compile Include="SolidEdgeOcurrenceEventHelper.cs" />
-    <Compile Include="SolidEdgeSystenEventHelper.cs" />
+    <Compile Include="SolidEdgeSystemEventHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

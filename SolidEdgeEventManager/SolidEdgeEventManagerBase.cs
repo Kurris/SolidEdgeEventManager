@@ -6,19 +6,11 @@ using SolidEdgeFramework;
 using System;
 using System.Collections.Generic;
 
-/* 功能 : 事件管理基类
- * 
- * 
- * 修改时间                               修改人                                 修改内容
- * 20200706                              ligy                                  create
- * 20200707                              ligy                                  修改为abstract
- * 20200707                              ligy                                  增加对系统事件支持
- * 20200708                              ligy                                  增加对Occurrence事件添加
- * 
- ***************************************************************************************************************/
-
 namespace SolidEdge.Events.Base
 {
+    /// <summary>
+    /// SolidEdge事件管理基类
+    /// </summary>
     public abstract class SolidEdgeEventManagerBase
     {
         /// <summary>
@@ -30,8 +22,8 @@ namespace SolidEdge.Events.Base
         /// <summary>
         /// Application相关
         /// </summary>
-        private readonly Dictionary<object, Dictionary<SEEvent, SolidEdgeSystenEventHelper>> _mDicHelprOfApp
-            = new Dictionary<object, Dictionary<SEEvent, SolidEdgeSystenEventHelper>>();
+        private readonly Dictionary<object, Dictionary<SEEvent, SolidEdgeSystemEventHelper>> _mDicHelprOfApp
+            = new Dictionary<object, Dictionary<SEEvent, SolidEdgeSystemEventHelper>>();
 
 
         /// <summary>
@@ -117,7 +109,7 @@ namespace SolidEdge.Events.Base
 
                 if (!_mDicHelperOfDoc.ContainsKey(Key))
                 {
-                    _mDicHelperOfDoc.Add(Key, new Dictionary<SEEvent, SolidEdgeDocumentEventHelper>()
+                    _mDicHelperOfDoc.Add(Key, new Dictionary<SEEvent, SolidEdgeDocumentEventHelper>(new EnumComparer<SEEvent>())
                     {
                         [EventType] = Helper
                     });
@@ -293,12 +285,12 @@ namespace SolidEdge.Events.Base
                     //添加
                     if (AddOrRemove)
                     {
-                        SolidEdgeSystenEventHelper Helper = new SolidEdgeSystenEventHelper(ObjectKey, EventType, RegisterMethod);
+                        SolidEdgeSystemEventHelper Helper = new SolidEdgeSystemEventHelper(ObjectKey, EventType, RegisterMethod);
                         //不存在
                         if (!_mDicHelprOfApp.ContainsKey(ObjectKey))
                         {
                             //添加
-                            _mDicHelprOfApp.Add(ObjectKey, new Dictionary<SEEvent, SolidEdgeSystenEventHelper>()
+                            _mDicHelprOfApp.Add(ObjectKey, new Dictionary<SEEvent, SolidEdgeSystemEventHelper>(new EnumComparer<SEEvent>())
                             {
                                 [EventType] = Helper
                             });
