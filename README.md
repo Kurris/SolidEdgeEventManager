@@ -31,9 +31,9 @@ SolidEdgeEventManager.Instance.AddOrReplaceEvent(Key, SEEvent.ApplicationAfterAc
 });
 ```
   
-* 如果需要为SolidEdge中ASM文档下的par文件添加事件
+* 如果需要为SolidEdge中ASM文档下的par文件添加事件,此处的par一般为 XXX.par:1之类的名称
 ```C#
-SolidEdgeEventManager.Instance.AddEvent(this,"文件名", SEEvent.AssemblyRecomputeAfterRecompute,x => 
+SolidEdgeEventManager.Instance.AddEvent(Key,"文件名", SEEvent.AssemblyRecomputeAfterRecompute,x => 
 {
       //TODO
 });
